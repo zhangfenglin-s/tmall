@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>天猫注册</title>
+		<link rel="shortcut icon" href="tmall/login.ico" />
+		<link rel="stylesheet" type="text/css" href="css/reg.css" />
+		<link rel="stylesheet" href="css/iconfont.css">
+	</head>
+	<body>
+		<div class="top">
+			<ul>
+				<li><span>1</span>设置用户名</li>
+				<li><span>2</span>填写账号信息</li>
+				<li><span>3</span>设置支付方式</li>
+				<li><span>4</span>注册成功</li>
+			</ul>
+			<div class="wrap-line">
+				<div class="floater"></div>
+			</div>
+		</div>
+		<div class="content">
+			
+			<div class="middle">
+				<dl>
+					<dt class="bolder">登录名</dt>
+					<dd>13945678901</dd>
+				</dl>
+				<dl>
+					<dt class="bolder">请设置登录密码</dt>
+					<dd>登录时验证，保护账号信息</dd>
+				</dl>
+				<dl>
+					<dt>密码</dt>
+					<dd><input type="text" placeholder="设置你的登陆密码" id="pwd1"><span class="warning warning1"><i class="iconfont icon-del"></i><span>密码设置不符合要求</span></span></dd>
+				</dl>
+				<dl>
+					<dt>密码确认</dt>
+					<dd><input type="text" placeholder="请再次输入你的密码" id="pwd2"><span class="warning warning2"><i class="iconfont icon-del"><span></i>密码输入不相同</span></span></dd>
+				</dl>
+				<dl>
+					<dt class="bolder">设置会员名</dt>
+				</dl>
+				<dl class="name">
+					<dt>注册名</dt>
+					<dd><input type="text" placeholder="会员名一旦设置成功,无法修改" id="name1"><div class="warn"><span class="warning warning3"><i class="iconfont icon-del"><span></i>1-20个字符推荐使用中文请勿包含姓名/身份证/银行卡等隐私信息，一旦设置成功无法修改</span></span></div></dd>
+				</dl>
+				<div class="submit">
+					<button>提交</button>
+				</div>
+			</div>
+			
+		</div>
+
+	</body>
+</html>
+<script src="js/jQuery.js"></script>
+
+<script type="text/javascript">
+	// 设置密码,任意字符6到20位
+	let reg1 = /^.{6,20}$/;
+	// 设置用户名,1到20位中文
+	let reg2 = /^|[\u4e00-\u9fa5]{1,20}$/
+	let flag1 = false;
+	let flag2 = false;
+	let flag3 = false;
+	let flag4 = false;
+	$("#pwd1").blur(function(){
+		if(reg1.test($("#pwd1").val())==false){
+			$(".warning1").css({opacity:"1"});
+		}else{
+			$(".warning1").css({opacity:"0"});
+			flag1 =true;
+		}
+	})
+
+	
+	$("#pwd2").blur(function(){
+		if($("#pwd1").val() != $("#pwd2").val()){
+			$(".warning2").css({opacity:"1"});
+		}else{
+			$(".warning2").css({opacity:"0"});
+			flag2 = true;
+		}
+	})
+	
+	$("#name1").blur(function(){
+		let flag4 = "blur";
+		if(reg2.test($("#name1").val())==false){
+			$(".warning3").css({opacity:"1"});
+		}else{
+			$(".warning3").css({opacity:"0"});
+			let xhr = new XMLHttpRequest();
+				xhr.open("POST","php/reg.php","true");
+				xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+				xhr.onreadystatechange = function(){
+					if(xhr.readyState == 4 && xhr.status == 200){
+						fun1(xhr.responseText);
+					}
+				}
+				xhr.send("name="+$("#name1").val()+"&flag4=blur");
+			}
+	})
+	function fun1(str){
+		if(str=="1"){
+			alert("用户名已存在，请重新输入");
+		}else{
+			flag3 = true;
+		}
+	}
+	
+	
+	$(".submit button").click(function(){
+		let flag4 = "submit";
+		if(flag1&&flag2&&flag3){
+			
+			let xhr = new XMLHttpRequest();
+			xhr.open("POST","php/reg.php","true");
+			xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState == 4 && xhr.status == 200){
+					fun2(xhr.responseText);
+				}
+			}
+			xhr.send("name="+$("#name1").val()+"&password="+$("#pwd2").val()+"&flag4=submit");//
+		
+		}
+	})
+	
+	function fun2(str){
+		if(str=="1"){
+			alert("注册失败");
+		}else{
+			location.href = "login.html"
+		}
+	}
+	
+	
+</script>

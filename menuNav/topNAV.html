@@ -1,0 +1,471 @@
+<style>
+.sn-container {
+position:relative;
+height: 35px;
+width: 1403px;
+margin:0 auto;
+background-color:#eee;
+/* overflow: hidden; */
+}
+
+.sn-container p {
+width: 228px;
+display: inline-block;
+height: 32px;
+line-height: 32px;
+margin:0;
+}
+
+.sn-container p em {
+font-family: "Microsoft YaHei", tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
+font-size: 12px;
+font-style: normal;
+color: #999999;
+}
+
+.sn-container p a {
+color: #999999;
+font-size: 12px;
+}
+.sn-container p a:hover {
+color: #FF0036;
+}
+.sn-container p #log {
+padding: 0 10px 0 20px;
+}
+
+.sn-container p #reg {
+padding: 0 10px 0 10px;
+}
+
+.sn-container ul {
+float: right;
+display: flex;
+position: relative;
+right: 0;
+height: 32px;
+line-height: 32px;
+}
+.sn-container ul .sn-separator{
+height:17px;
+width:1px;
+background-color:#999999;
+padding:0;
+margin-top:10px;
+}
+.sn-container ul li {
+list-style-type: none;
+padding: 0 14px 0 10px;
+position:relative;
+}
+/* 我的淘宝,收藏夹 */
+.sn-container ul .second-menu div {
+background:white;
+text-align:center;
+border:1px solid lightgray;
+border-top:none;
+width:100px;
+display:flex;
+flex-direction: column;
+position:absolute;
+top:32px;
+left:0;
+opacity:0;
+}
+.sn-container ul .second-menu div>a{
+margin:0;
+font-size:14px;
+text-decoration:none;
+}
+.sn-container ul .second-menu div>a:hover{
+color: #FF0036;
+text-decoration: underline;
+}
+.sn-container ul .second-menu:hover {
+background-color: white;
+z-index: 900;
+}
+.sn-container ul .second-menu:hover>a{
+text-decoration: underline;
+}
+.sn-container ul li:hover b{
+transform:translateY(-3px) rotateZ(180deg);
+transition:all .3s;
+}
+/* 商家支持 */
+.sn-container ul li:nth-child(7):hover {
+background-color: white;
+}
+.sn-container ul li:nth-child(7){
+position:relative;
+}
+.company-suport{
+padding-left:24px;
+position:absolute;
+left:-84px;
+z-index:900;
+background:white;
+width:142px;
+border:1px solid lightgray;
+border-top:none;
+display:none;
+padding-bottom:5px;
+}
+h5{
+margin:0;
+}
+.company-suport div{
+border-bottom:1px dotted lightgray;
+}
+.company-suport a:hover{
+color:#FF0036;
+text-decoration:underline;
+}
+.sn-container ul li:nth-child(7):hover .company-suport{
+display:block;
+}
+
+.sn-container ul li:nth-child(7):hover>a{
+text-decoration: underline;
+}
+.sn-container ul li:nth-child(8):hover {
+background-color: white;
+}
+.sn-container ul li:nth-child(8):hover a{
+text-decoration: underline;
+}
+.sn-container ul li a {
+color: #999999;
+font-size: 12px;
+margin:0 5px;
+}
+.sn-container ul li b {
+width:0;
+height:0;
+border:3px solid transparent;
+border-top:3px solid #999999;
+position:absolute;
+top:17px;
+}
+.sn-container ul li:hover>a {
+color: #FF0036;
+}
+.sn-container ul li:hover>div {
+opacity:1;
+}
+.sn-container ul li:hover #sn-container-navweb{
+color: #999999;
+}
+.phone-qrCode{
+z-index:9000;
+display:none;
+position:absolute;
+left:-33px;
+top:10px;
+}
+.phone-qrCode-li:hover .phone-qrCode{
+display:block;
+cursor: pointer;
+}
+.phone-triangle{
+width:0;
+height:0;
+border:10px solid transparent;
+border-bottom:10px solid white;
+position:relative;
+left:70px;
+}
+.phone-qrCode-content{
+width:175px;
+height:230px;
+background:white;
+box-shadow: 1px 1px 5px #808080,-1px -1px 5px #808080;
+
+}
+/* 网址导航 */
+.last-sn-container-navweb{
+position:relative;
+}
+ul .last-sn-container-navweb:hover #box-content-netNav{
+display:flex;
+}
+#box-content-netNav{
+	background:white;
+	width:1370px;
+	height:153px;
+	display:none;
+	position:absolute;
+	right:0;
+	top:31px;
+	z-index:1000;
+	line-height: 24px;
+	border:1px solid gray;
+	border-top:none;
+}
+#box-content-netNav>div{
+	padding:0 20px;
+	
+}
+#box-content-netNav>div:nth-child(2){
+	border-right:1px solid gray;
+}
+#box-content-netNav>div:nth-child(1) a{
+	width:70px;
+	white-space: nowrap;
+}
+#box-content-netNav>div:nth-child(2) a{
+	width:52px;
+}
+#box-content-netNav>div:nth-child(1){
+	border-right:1px solid gray;
+}
+#box-content-netNav>div h3{
+	font-weight:100;
+}
+#box-content-netNav>div:nth-child(2) h3{
+	color:#427def;
+}
+#box-content-netNav>div:nth-child(1) h3{
+	color: #f7a831;
+}
+#box-content-netNav>div:nth-child(1) a:hover{
+	color: #f7a831;
+}
+#box-content-netNav>div:nth-child(2) a:hover{
+	color:#427def;
+}
+#box-content-netNav>div:nth-child(3) a:hover{
+	text-decoration:underline;
+}
+#box-content-netNav>div:nth-child(3) h3{
+	color: #999;
+}
+
+
+#box-content-netNav>div>a{
+	display:inline-block;
+	margin:0 20px;
+	text-decoration:none;
+}
+/* 搜索框 */
+#header-container{
+	width:100%;
+	background:white;
+	position:relative;
+}
+#header{
+	margin:0 auto;
+	position:relative;
+	width:1370px;
+	height:90px;
+	background-color: white;
+}
+#header>span{
+	position: absolute;
+	display: block;
+	width: 181px;
+	height: 45px;
+	overflow: hidden;
+	top: 14px;
+	left: 0;
+	background:url(tmall/cart/TB1boCXfmCWBuNjy0FhXXb6EVXa-800-600.png);
+	background-position: -110px 0;
+	background-color: #fff;
+}
+#header #mallSearch {
+	width: 515px;
+	height:70px;
+	margin-top:14px;
+	float:right;
+	overflow: hidden;
+}
+.mallSearch-input{
+	border:4px solid #ff4400;
+	display:flex;
+	position:absolute;
+}
+.mallSearch-input>input:nth-child(1){
+	width:342px;
+	height:29px;
+	/* padding:5px 3px 5px 3px; */
+	border: none;
+}
+.mallSearch-input>span:nth-child(2){
+	display:inline-block;
+	width:74px;
+	height:32px;
+	line-height:30px;
+	text-align: center;
+	/* padding:5px 3px 5px 3px; */
+	border: none;
+	background:#eee;
+	position:absolute;
+	top:0;
+	left:0;
+}
+.mallSearch-input>span:nth-child(2):hover{
+	cursor:pointer;
+}
+.mallSearch-input>span:nth-child(2):hover>div{
+	display:block;
+}
+.mallSearch-input>span:nth-child(2)>div>span{
+	display:block;
+	width:74px;
+	height:29px;
+	background:white;
+}
+.mallSearch-input>span:nth-child(2) span:hover{
+	background:#eee;
+	cursor:pointer;
+}
+.mallSearch-input>span:nth-child(2)>div{
+	position:absolute;
+	top:29px;
+	left:0;
+	width:74px;
+	height:58px;
+	display:none;
+}
+.mallSearch-input span:nth-child(2) i{
+	display:inline-block;
+	width:10px;
+	height:10px;
+	font-style: normal;
+}
+.mallSearch-input>i {
+	position:absolute;
+	left:80px;
+	top:10px;
+	display:inline-block;
+	width:20px;
+	height:20px;
+	background-position: -380px -20px;
+	background-image: url(tmall/cart/T1OdGtFaxfXXXa78nI-400-200.png);
+	background-repeat: no-repeat;
+}
+.mallSearch-input button:nth-child(4){
+	width:74px;
+	height:32px;
+	background-color:#ff4400;
+	border:none;
+	font-size:20px;
+	font-weight:900;
+	color:white;
+}
+
+
+
+</style>
+
+<div id="site-nav">
+<div class="sn-container">
+<p>
+<em>喵，欢迎来天猫</em>
+<a href="#" id="log">请登录</a>
+<a href="#" id="reg">免费注册</a>
+</p>
+<ul>
+<li class="second-menu"><a href="#">我的淘宝</a><b></b>
+<div><a href="#">已买到的宝贝</a><a href="#">已卖出的宝贝</a></div>
+</li>
+<li><i class="iconfont icon-cart"></i><a href="cart.html">购物车</a></li>
+<li class="second-menu"><a href="#">收藏夹</a><b></b>
+<div><a href="#">收藏的店铺</a><a href="#">收藏的宝贝</a></div>
+</li>
+<li class="sn-separator"></li>
+<li class="phone-qrCode-li">
+<i class="iconfont icon-phone2"></i>
+<a href="#">手机版</a>
+<div class="phone-qrCode">
+	<div class="phone-triangle"></div>
+	<div class="phone-qrCode-content"><img src="tmall/TB1vJ0POwTqK1RjSZPhXXXfOFXa-175-215.png" alt=""></div>
+</div>
+</li>
+<li><a href="#">淘宝网</a></li>
+<li><a href="#">商家支持</a><b></b>
+<div class="company-suport">
+	<div class="company-suport-company">
+		<h5>商家：</h5>
+		<a href="#">商家中心</a>
+		<a href="#">天猫规则</a>
+		<a href="#">商家入驻</a>
+		<a href="#">运营服务</a>
+		<a href="#">商家品控</a>
+		<a href="#">商家工具</a>
+		<a href="#">天猫智库</a>
+		<a href="#">喵言喵语</a>
+	</div>
+	<div class="company-suport-help">
+		<h5>帮助：</h5>
+		<a href="#">帮助中心</a>
+		<a href="#">问商友</a>
+	</div>
+</div>
+</li>
+<li class="last-sn-container-navweb">
+<i class="iconfont icon-dh"></i><a href="#" id="sn-container-navweb">网址导航</a><b></b>
+<div id="box-content-netNav">
+	<div>
+		<h3>热点推荐Hot</h3>
+		<a href="#">天猫超市</a>
+		<a href="#">喵鲜生</a>
+		<a href="#">科技新品<i class="iconfont icon-new1"></i></a>
+		<a href="#">女装新品<i class="iconfont icon-hot"></i></a>
+		<a href="#">酷玩街</a><br>
+		<a href="#">内衣新品<i class="iconfont icon-hot"></i></a>
+		<a href="#">试美妆</a>
+		<a href="#">运动新品</a>
+		<a href="#">时尚先生<i class="iconfont icon-hot"></i></a>
+		<a href="#">精明妈咪</a><br>
+		<a href="#">吃乐会<i class="iconfont icon-new1"></i></a>
+		<a href="#">企业采购</a>
+		<a href="#">会员积分</a>
+		<a href="#">天猫国际</a>
+		<a href="#">品质频道</a>
+	</div>
+	<div>
+		<h3>行业市场Market</h3>
+		<a href="#">美妆</a>
+		<a href="#">电器</a>
+		<a href="#">女装<i class="iconfont icon-hot"></i></a>
+		<a href="#">男装<i class="iconfont icon-hot"></i></a>
+		<a href="#">女鞋</a><br>
+		<a href="#">男鞋</a>
+		<a href="#">内衣<i class="iconfont icon-hot"></i></a>
+		<a href="#">箱包</a>
+		<a href="#">运动</a>
+		<a href="#">母婴</a><br>
+		<a href="#">家装</a>
+		<a href="#">医药</a>
+		<a href="#">食品</a>
+		<a href="#">配饰</i></a>
+		<a href="#">汽车</a>
+	</div>
+	<div>
+		<h3>服务指南Help</h3>
+		<a href="#">帮助中心</a>
+		<a href="#">品质保障</a><br>
+		<a href="#">特色服务</a>
+		<a href="#">7天退换货</a>
+	</div>
+</div>
+</li>
+</ul>
+</div>
+<div id="header-container">
+<div id="header">
+<span></span>
+<div id="mallSearch">
+<div class="mallSearch-input">
+	<input type="text">
+	<span>宝贝<i>^</i>
+		<div><span>天猫</span><span>店铺</span></div>
+	</span>
+	<i></i>
+	<button>搜索</button>
+
+</div>
+</div>
+</div>
+</div>
